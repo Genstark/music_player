@@ -7,7 +7,7 @@ import os
 def play():
     pygame.init()
     pygame.mixer.init()
-    pygame.mixer.music.load("C:/Users/gauta/Documents/songs/The Script - Hall Of Fame.mp3")
+    pygame.mixer.music.load("path of music")
     pygame.mixer.music.play()
 
 def pause(task):
@@ -48,15 +48,16 @@ song_list = []
 songlist = tk.Listbox(player,
                     borderwidth=4)
 
-for path, folder, file in os.walk("C:/Users/gauta/Documents"):
+print("Finding all music")
+for path, folder, file in os.walk("C:/"):
     for files in file:
         if files.endswith("mp3"):
             song_list.append(os.path.join(path,files))
             songlist.insert(0,files)
 
 print(song_list)
+print("Compelete Finding music")
 songlist.pack(fill="x")
-
 
 play_button = tk.Button(player,
                         text="PLAY",
