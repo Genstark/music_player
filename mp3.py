@@ -49,11 +49,20 @@ songlist = tk.Listbox(player,
                     borderwidth=4)
 
 print("Finding all music")
-for path, folder, file in os.walk("C:/"):
-    for files in file:
-        if files.endswith("mp3"):
-            song_list.append(os.path.join(path,files))
-            songlist.insert(0,files)
+try:    
+    for path, folder, file in os.walk("C:/"):
+        for files in file:
+            if files.endswith("mp3"):
+                song_list.append(os.path.join(path,files))
+                songlist.insert(0,files)
+except:
+    for path, folder, file in os.walk("/"):
+        for files in file:
+            if files.endswith("mp3"):
+                song_list.append(os.path.join(path,files))
+                songlist.insert(0,files)
+finally:
+    print("All file is found")
 
 print(song_list)
 print("Compelete Finding music")
